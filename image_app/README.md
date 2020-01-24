@@ -1,4 +1,4 @@
-# image_app
+# ImaSo
 
 A new Flutter project.
 
