@@ -1,0 +1,32 @@
+[
+  {
+    "id": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourceGroups/mlh-hack/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision/operations/07BC6EAE3657893A",
+    "operationId": "07BC6EAE3657893A",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-01-24T08:47:47.1668246Z",
+      "duration": "PT5.1685003S",
+      "trackingId": "7bb5f11b-ca59-4dab-8260-95a0ee00384f",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourceGroups/mlh-hack/providers/Microsoft.CognitiveServices/accounts/ImaSo",
+        "resourceType": "Microsoft.CognitiveServices/accounts",
+        "resourceName": "ImaSo"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourceGroups/mlh-hack/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision/operations/08586217512882670360",
+    "operationId": "08586217512882670360",
+    "properties": {
+      "provisioningOperation": "EvaluateDeploymentOutput",
+      "provisioningState": "Succeeded",
+      "timestamp": "2020-01-24T08:47:47.2362603Z",
+      "duration": "PT0.0406302S",
+      "trackingId": "aac80f0a-eee6-447d-90da-92ec5a8e1e15",
+      "statusCode": "OK",
+      "statusMessage": null
+    }
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "id": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourceGroups/mlh-hack/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision",
+  "name": "Microsoft.CognitiveServicesComputerVision",
+  "type": "Microsoft.Resources/deployments",
+  "tags": {
+    "primaryResourceId": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourcegroups/mlh-hack/providers/Microsoft.CognitiveServices/accounts/ImaSo",
+    "marketplaceItemId": "Microsoft.CognitiveServicesComputerVision"
+  },
+  "properties": {
+    "templateHash": "12479349499275681034",
+    "parameters": {
+      "name": {
+        "type": "String",
+        "value": "ImaSo"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastasia"
+      },
+      "apiType": {
+        "type": "String",
+        "value": "ComputerVision"
+      },
+      "sku": {
+        "type": "String",
+        "value": "F0"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2020-01-24T08:47:47.2566311Z",
+    "duration": "PT1M10.0460524S",
+    "correlationId": "1ec9a6e1-b386-4d27-ae0e-de64efdc6015",
+    "providers": [
+      {
+        "namespace": "Microsoft.CognitiveServices",
+        "resourceTypes": [
+          {
+            "resourceType": "accounts",
+            "locations": [
+              "eastasia"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [],
+    "outputResources": [
+      {
+        "id": "/subscriptions/e8a22536-8f93-4fc3-91bf-9e9180e173be/resourceGroups/mlh-hack/providers/Microsoft.CognitiveServices/accounts/ImaSo"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}
