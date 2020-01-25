@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_image_compress: ^0.6.5+1
   flutter_tts:
   http:
   flutter_uploader:

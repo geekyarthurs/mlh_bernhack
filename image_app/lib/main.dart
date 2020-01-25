@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 // ignore_for_file: public_member_api_docs
-
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'dart:async';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'dart:io';
-import 'package:path/path.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -414,6 +414,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       var myImage = File(filePath);
       await _asyncFileUpload(myImage);
       
+      
 
 
 
@@ -454,10 +455,22 @@ Future<void> main() async {
 
 
 _asyncFileUpload(File file) async{
+  var result = await FlutterImageCompress.compressWithFile(
+      file.absolute.path,
+      minWidth: 256,
+      minHeight: 256,
+      quality: 75
+      
+      
+    );
    //create multipart request for POST or PATCH method
    var request = http.MultipartRequest("POST", Uri.parse("https://eastus.api.cognitive.microsoft.com/vision/v2.0/describe?maxCandidates=1&language=en"));
+   var face_request = http.MultipartRequest("POST", Uri.parse("https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/ba754856-f1d4-419f-a5ab-9e7d2cc9002e/classify/iterations/Iteration7/image"));
    //add text fields
   request.headers["Ocp-Apim-Subscription-Key"] = "2abba9fb824147f69076a67175ffa6fb";
+
+
+  face_request.headers["Prediction-Key"] = "284192af167e4d88918fd9edcebbe2c8";
 
 
    //create multipart using filepath, string or bytes
@@ -465,20 +478,53 @@ _asyncFileUpload(File file) async{
    print(file.path);
    //add multipart to request
    request.files.add(pic);
+
+    var pic2 = await http.MultipartFile.fromPath("file_field", file.path);
+   face_request.files.add(pic2);
+   print('image binded.');
    var response = await request.send();
+
+   print('response aayo.');
+   var face_response = await face_request.send();
 
    //Get the response from the server
    var responseData = await response.stream.toBytes();
+   var faceResponseData = await face_response.stream.toBytes();
+
+   
    var responseString = String.fromCharCodes(responseData);
+   var faceResponseString = String.fromCharCodes(faceResponseData);
+
+   
+
    var text =json.decode(responseString);
-   String readyText;
+   print(faceResponseString);
+   var faceText = json.decode(faceResponseString);
+
+print(faceText);
+   String readyFaceText;
+    String readyText;
    try{
    readyText = text["description"]["captions"][0]["text"];
-   }catch(Exception e){
+   readyFaceText = " He is ${faceText['predictions'][0]['tagName']}";
+
+   if(faceText['predictions'][0]['tagName'] == 'not_a_person'){
+     readyFaceText = "";
+   }
+
+   }
+   catch(e){
+     print(e);
       readyText = "Sorry. Unable to recognize.";
+      readyFaceText = "";
    }
    print(text);
-   await _speak(readyText);
+   print(readyFaceText);
+
+   
+   await _speak(readyText + readyFaceText);
+  
+   
 }
 
 Future _speak(String textToSpeak) async{
@@ -487,12 +533,13 @@ Future _speak(String textToSpeak) async{
 
   await flutterTts.setLanguage("en-US");
 
-  await flutterTts.setSpeechRate(0.7);
+  await flutterTts.setSpeechRate(0.4);
 
   await flutterTts.setVolume(1.0);
 
   await flutterTts.setPitch(1.0);
 
-  await flutterTts.isLanguageAvailable("en-US");
-    var result = await flutterTts.speak(textToSpeak);
+  await flutterTts.isLanguageAvailable("hi-IN");
+  var result = await flutterTts.speak(textToSpeak.replaceAll("_", " "));
+
 }
