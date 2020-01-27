@@ -467,10 +467,10 @@ _asyncFileUpload(File file) async{
    var request = http.MultipartRequest("POST", Uri.parse("https://eastus.api.cognitive.microsoft.com/vision/v2.0/describe?maxCandidates=1&language=en"));
    var face_request = http.MultipartRequest("POST", Uri.parse("https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/ba754856-f1d4-419f-a5ab-9e7d2cc9002e/classify/iterations/Iteration7/image"));
    //add text fields
-  request.headers["Ocp-Apim-Subscription-Key"] = "2abba9fb824147f69076a67175ffa6fb";
+  request.headers["Ocp-Apim-Subscription-Key"] = "<Subscription key>";
 
 
-  face_request.headers["Prediction-Key"] = "284192af167e4d88918fd9edcebbe2c8";
+  face_request.headers["Prediction-Key"] = "<Subscription key>";
 
 
    //create multipart using filepath, string or bytes
